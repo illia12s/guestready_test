@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Reservations{% endblock %}
+
+{% block content %}
+<h1>Reservations</h1>
+<h3>Previous reservation ID</h3>
+
+<table class="table table-hover">
+    <thead>
+        <th>Rental_name</th>
+        <th>ID</th>
+        <th>Check in</th>
+        <th>Check out</th>
+        <th>Previous reservation ID</th>
+    </thead>
+    <tbody>
+        {% for reservation in reservation_list %}
+            <tr>
+                <td>{{ reservation.rental.name }}</td>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.checkin|date:'Y-m-d' }}</td>
+                <td>{{ reservation.checkout|date:'Y-m-d' }}</td>
+                <td>{{ reservation.get_prev_reservation_id }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
